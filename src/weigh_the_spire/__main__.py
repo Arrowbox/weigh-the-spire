@@ -117,7 +117,7 @@ def print_deaths(deaths):
         if enemy:
             print("\t{}:{}".format(enemy, deaths[enemy]))
 
-if __name__ == '__main__':
+def main():
     args = parse_args()
 
     location = find_runs(args.steamapps)
@@ -133,3 +133,6 @@ if __name__ == '__main__':
 
     print_encounters(encounters['encounters'])
     print_deaths(encounters['deaths'])
+
+if __name__ == '__main__':
+    main()

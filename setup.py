@@ -12,6 +12,7 @@ setup(
     author_email='jayson.messenger@gmail.com',
     license='MIT',
     packages=find_packages('src'),
+    package_dir={'':'src'},
     entry_points={
         'console_scripts': ['weigh-the-spire=weigh_the_spire.__main__:main']
     }
