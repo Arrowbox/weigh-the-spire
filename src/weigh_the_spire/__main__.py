@@ -75,7 +75,7 @@ def find_enemies(encounters, floors):
 def find_killed_by(floors, last):
     for floor in floors:
         if floor['floor'] == last:
-            return floor['enemies']
+            return floor.get('enemies', None)
 
 def find_encounters(runs):
     encounters = {
