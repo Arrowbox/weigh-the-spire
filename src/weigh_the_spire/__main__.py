@@ -75,7 +75,7 @@ def find_enemies(encounters, floors):
 def find_killed_by(floors, last):
     for floor in floors:
         if floor['floor'] == last:
-            return floor['enemies']
+            return floor.get('enemies', None)
 
 def find_encounters(runs):
     encounters = {
@@ -105,15 +105,18 @@ def find_encounters(runs):
 
     return {'encounters': encounters, 'deaths': deaths}
 
+def sorted_keys(dict):
+    return sorted(dict, key=lambda key: dict[key], reverse=True)
+
 def print_encounters(encounters):
     for enc_type in encounters.keys():
         print(enc_type.capitalize())
-        for enemy_type in encounters[enc_type].keys():
+        for enemy_type in sorted_keys(encounters[enc_type]):
             print("\t{}:{}".format(enemy_type, encounters[enc_type][enemy_type]))
 
 def print_deaths(deaths):
     print("Killed by:")
-    for enemy in deaths.keys():
+    for enemy in sorted_keys(deaths):
         if enemy:
             print("\t{}:{}".format(enemy, deaths[enemy]))
 
